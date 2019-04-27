@@ -1,0 +1,14 @@
+[Unit]
+Description=Bitcoin Confidentials DNS-Seeder
+After=network-online.target
+
+[Service]
+User=root
+Type=simple
+EnvironmentFile=/etc/.bitcoinc-seeder-config
+ExecStart=/usr/local/bin/bitcoinc-seeder -h $SEED -n $SEEDER -m $EMAIL
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
